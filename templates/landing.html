@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d33sty</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Профиль */
+        .profile {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .bio {
+            color: rgba(255,255,255,0.9);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Кнопки-ссылки */
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .link-card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px 24px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .link-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .link-icon {
+            font-size: 28px;
+        }
+
+        .link-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .link-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .link-url {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .arrow {
+            font-size: 20px;
+            color: #764ba2;
+            transition: transform 0.3s ease;
+        }
+
+        .link-card:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        /* GitHub специфичный цвет */
+        .link-card.github:hover {
+            background: #f6f8fa;
+        }
+        .link-card.github .link-icon {
+            color: #333;
+        }
+
+        /* Telegram специфичный цвет */
+        .link-card.telegram:hover {
+            background: #e8f4ff;
+        }
+        .link-card.telegram .link-icon {
+            color: #0088cc;
+        }
+
+        /* Phone специфичный цвет */
+        .link-card.phone {
+            cursor: copy;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        .link-card.phone:hover {
+            background: #e8f5e9;
+        }
+        .link-card.phone .link-icon {
+            color: #4caf50;
+        }
+        .link-card.phone .arrow {
+            color: #4caf50;
+        }
+
+        /* Социальные кнопки внизу */
+        .social-footer {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+        }
+
+        .social-footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: opacity 0.3s;
+        }
+
+        .social-footer a:hover {
+            opacity: 0.8;
+        }
+
+        /* Стиль для копирования номера */
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            z-index: 1000;
+            animation: fadeInOut 2s ease;
+            pointer-events: none;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Профиль -->
+        <div class="profile">
+            <div class="avatar">
+                👨‍💻
+            </div>
+            <h1>d33sty</h1>
+            <p class="bio">Python Backend Developer</p>
+        </div>
+
+        <!-- Ссылки -->
+        <div class="links">
+            <!-- GitHub -->
+            <a href="https://github.com/d33sty" target="_blank" class="link-card github">
+                <div class="link-left">
+                    <div class="link-icon">🐙</div>
+                    <div class="link-info">
+                        <div class="link-title">GitHub</div>
+                        <div class="link-url">github.com/d33sty</div>
+                    </div>
+                </div>
+                <div class="arrow">→</div>
+            </a>
+
+            <!-- Telegram -->
+            <a href="https://t.me/d33sty" target="_blank" class="link-card telegram">
+                <div class="link-left">
+                    <div class="link-icon">💬</div>
+                    <div class="link-info">
+                        <div class="link-title">Telegram</div>
+                        <div class="link-url">t.me/d33sty</div>
+                    </div>
+                </div>
+                <div class="arrow">→</div>
+            </a>
+
+            <!-- Телефон -->
+            <div class="link-card phone" onclick="copyPhoneNumber()">
+                <div class="link-left">
+                    <div class="link-icon">📱</div>
+                    <div class="link-info">
+                        <div class="link-title">Phone Number</div>
+                        <div class="link-url">+7 (919) 960-27-88</div>
+                    </div>
+                </div>
+                <div class="arrow">📋</div>
+            </div>
+        </div>
+
+        <!-- Футер -->
+        <div class="social-footer">
+            <p>Wake up, Samurai! We have a city to burn!</p>
+            <p style="margin-top: 10px; font-size: 12px;">
+                © 2026 d33sty
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function copyPhoneNumber() {
+            const phoneNumber = '+79199602788';
+            
+            // Создаем временный элемент для копирования
+            const tempInput = document.createElement('input');
+            tempInput.value = phoneNumber;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            // Показываем уведомление
+            showNotification('Номер скопирован! 📋');
+        }
+        
+        function showNotification(message) {
+            // Удаляем существующее уведомление, если есть
+            const existingNotification = document.querySelector('.copy-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            // Создаем новое уведомление
+            const notification = document.createElement('div');
+            notification.className = 'copy-notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Удаляем уведомление через 2 секунды
+            setTimeout(() => {
+                notification.remove();
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
